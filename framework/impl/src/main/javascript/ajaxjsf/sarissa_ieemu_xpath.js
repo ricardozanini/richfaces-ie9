@@ -3,7 +3,7 @@
  * About
  * ====================================================================
  * Sarissa cross browser XML library - IE XPath Emulation 
- * @version 0.9.9.3
+ * @version 0.9.9.6
  * @author: Copyright 2004-2007 Emmanouil Batsis, mailto: mbatsis at users full stop sourceforge full stop net
  *
  * This script emulates Internet Explorer's selectNodes and selectSingleNode
@@ -34,36 +34,44 @@
  */
 if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath", "3.0")){
     /**
-    * <p>SarissaNodeList behaves as a NodeList but is only used as a result to <code>selectNodes</code>,
-    * so it also has some properties IEs proprietery object features.</p>
-    * @private
-    * @constructor
-    * @argument i the (initial) list size
-    */
+     * <p>SarissaNodeList behaves as a NodeList but is only used as a result to <code>selectNodes</code>,
+     * so it also has some properties IEs proprietery object features.</p>
+     * @private
+     * @constructor
+     * @argument i the (initial) list size
+     */
     SarissaNodeList = function (i){
         this.length = i;
     };
-    /** <p>Set an Array as the prototype object</p> */
+    /** 
+     * <p>Set an Array as the prototype object</p> 
+     * @private
+     */
     SarissaNodeList.prototype = [];
-    /** <p>Inherit the Array constructor </p> */
+    /** 
+     * <p>Inherit the Array constructor </p> 
+     * @private
+     */
     SarissaNodeList.prototype.constructor = Array;
     /**
-    * <p>Returns the node at the specified index or null if the given index
-    * is greater than the list size or less than zero </p>
-    * <p><b>Note</b> that in ECMAScript you can also use the square-bracket
-    * array notation instead of calling <code>item</code>
-    * @argument i the index of the member to return
-    * @returns the member corresponding to the given index
-    */
+     * <p>Returns the node at the specified index or null if the given index
+     * is greater than the list size or less than zero </p>
+     * <p><b>Note</b> that in ECMAScript you can also use the square-bracket
+     * array notation instead of calling <code>item</code>
+     * @argument i the index of the member to return
+     * @returns the member corresponding to the given index
+     * @private
+     */
     SarissaNodeList.prototype.item = function(i) {
         return (i < 0 || i >= this.length)?null:this[i];
     };
     /**
-    * <p>Emulate IE's expr property
-    * (Here the SarissaNodeList object is given as the result of selectNodes).</p>
-    * @returns the XPath expression passed to selectNodes that resulted in
-    *          this SarissaNodeList
-    */
+     * <p>Emulate IE's expr property
+     * (Here the SarissaNodeList object is given as the result of selectNodes).</p>
+     * @returns the XPath expression passed to selectNodes that resulted in
+     *          this SarissaNodeList
+     * @private
+     */
     SarissaNodeList.prototype.expr = "";
     /** dummy, used to accept IE's stuff without throwing errors */
     if(window.XMLDocument && (!XMLDocument.prototype.setProperty)){
@@ -81,9 +89,12 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
     * first like:</p>
     * <pre>Sarissa.setXpathNamespaces(oDoc, "xmlns:myprefix'http://mynsURI'");</pre>
     * <p><b>Note 1 </b>: Use this method only if the source document features
-    * a default namespace (without a prefix), otherwise just use IE's setProperty
-    * (moz will rezolve non-default namespaces by itself). You will need to map that
-    * namespace to a prefix for queries to work.</p>
+    * a default namespace (without a prefix) or contains namespace declarations with
+    * a scope that does not cover the entire document (i.e. declared but not within the 
+    * root element node). Otherwise just use IE's setProperty. You will need to map that
+    * namespace to a prefix for queries to work.
+    * Moz/FF will resolve non-default namespaces automatically if those are declared 
+    *  in the root element. </p>
     * <p><b>Note 2 </b>: This method calls IE's setProperty method to set the
     * appropriate namespace-prefix mappings, so you dont have to do that.</p>
     * @param oDoc The target XMLDocument to set the namespace mappings for.
@@ -141,7 +152,7 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
             };
         }
         else{
-            this.createNSResolver(this.documentElement);
+            nsresolver = this.createNSResolver(this.documentElement);
         }
         var result = null;
         if(!returnSingle){
