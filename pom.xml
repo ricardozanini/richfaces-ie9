@@ -1,17 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.richfaces</groupId>
+	<groupId>br.com.omniweb.richfaces</groupId>
 	<artifactId>root</artifactId>
 	<packaging>pom</packaging>
 	<name>RichFaces project</name>
-	<version>3.3.4.Final</version>
-  <description>RichFaces project root</description>
-	<url>http://labs.jboss.com/jbossrichfaces</url>
-	<properties>
-		<snapshotRepository>
-			dav:https://snapshots.jboss.org/maven2
-		</snapshotRepository>
-	</properties>
+	<version>1.0.0.Final</version>
+	<description>RichFaces-IE9 project root</description>
+	<url>https://github.com/ricardozanini/richfaces-ie9</url>
+    
+    <properties>
+        <richfaces.fork.version>3.3.4.Final</richfaces.fork.version>
+    </properties>
 	<dependencies />
 	<build>
 		<extensions>
@@ -25,23 +25,6 @@
 				<artifactId>postgresql</artifactId>
 				<version>8.2-504.jdbc3</version>
 			</extension>
-			<!-- scm deployment wagon 
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-scm</artifactId>
-				<version>1.0-alpha-5</version>
-			</extension>
-			<extension>
-				<groupId>org.apache.maven.scm</groupId>
-				<artifactId>maven-scm-manager-plexus</artifactId>
-				<version>1.0</version>
-			</extension>
-			<extension>
-				<groupId>org.apache.maven.scm</groupId>
-				<artifactId>maven-scm-provider-svnexe</artifactId>
-				<version>1.0</version>
-			</extension>
-			-->
 		</extensions>
 		<pluginManagement>
 			<plugins>
@@ -70,43 +53,27 @@
 					</configuration>
 				</plugin>
 				<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.4.2</version>
-    <configuration>
-        <systemProperties>
-            <!--<property>
-                <name>org.ajax4jsf.test.checkXHTML.file</name>
-                <value>C:/m2.txt</value>
-            </property>-->
-	    <property>
-                <name>org.ajax4jsf.test.checkXHTML</name>
-                <value>true</value>
-            </property>
-        </systemProperties>
-    </configuration>
-</plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.4.2</version>
+					<configuration>
+						<systemProperties>
+							<property>
+								<name>org.ajax4jsf.test.checkXHTML</name>
+								<value>true</value>
+							</property>
+						</systemProperties>
+					</configuration>
+				</plugin>
 
 			</plugins>
 		</pluginManagement>
 	</build>
 	<modules>
-	<module>framework</module>
-	<!-- 
-		<module>cdk</module>
 		<module>framework</module>
-		<module>ui</module>
-		
-		<module>extensions</module>
-		<module>docs</module>
-		
-		<module>ui/assembly</module>
-		-->
-		<!-- 
-		<module>samples</module>
-		
-			<module>sandbox</module>
-		-->
+		<!-- <module>cdk</module> <module>framework</module> <module>ui</module> 
+			<module>extensions</module> <module>docs</module> <module>ui/assembly</module> -->
+		<!-- <module>samples</module> <module>sandbox</module> -->
 	</modules>
 	<repositories>
 		<repository>
@@ -141,34 +108,17 @@
 			<url>http://repository.jboss.org/maven2</url>
 		</repository>
 	</repositories>
-    <pluginRepositories>
-      <pluginRepository>
-        <id>atlassian-m2-repository</id>
-        <name>Atlassian Maven 2.x Repository</name>
-        <url>http://repository.atlassian.com/maven2</url>
-      </pluginRepository>
-    </pluginRepositories>	
-	<distributionManagement>
-		<downloadUrl>
-			http://www.jboss.org/richfaces/download
-		</downloadUrl>
-		<repository>
-			<id>repository.jboss.org</id>
-			<uniqueVersion>false</uniqueVersion>
-			<url>${releaseRepository}</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots.jboss.org</id>
-			<uniqueVersion>true</uniqueVersion>
-			<url>${snapshotRepository}</url>
-		</snapshotRepository>
-		<!--site>
-			<url>file:target/site2</url>
-		</site-->
-	</distributionManagement>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>atlassian-m2-repository</id>
+			<name>Atlassian Maven 2.x Repository</name>
+			<url>http://repository.atlassian.com/maven2</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<issueManagement>
-		<system>JIRA</system>
-		<url>http://jira.jboss.org/jira/browse/RF</url>
+		<system>GitHub</system>
+		<url>https://github.com/ricardozanini/richfaces-ie9/issues</url>
 	</issueManagement>
 	<developers>
 		<developer>
@@ -284,9 +234,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/branches/community/3.3.X</connection>
-		<developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</developerConnection>
-		<url>https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</url>
+		<connection>scm:git:https://github.com/ricardozanini/richfaces-ie9.git</connection>
+		<developerConnection>scm:git:https://github.com/ricardozanini/richfaces-ie9.git</developerConnection>
+		<url>https://github.com/ricardozanini/richfaces-ie9</url>
 	</scm>
 	<profiles>
 		<profile>

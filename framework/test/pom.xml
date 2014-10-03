@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<artifactId>framework</artifactId>
-		<groupId>org.richfaces</groupId>
-		<version>3.3.4.Final</version>
+		<groupId>br.com.omniweb.richfaces</groupId>
+		<version>1.0.0.Final</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.richfaces.framework</groupId>
-	<artifactId>richfaces-test</artifactId>
-	<version>3.3.4.Final</version>
+	<groupId>br.com.omniweb.richfaces.framework</groupId>
+	<artifactId>richfaces-ie9-test</artifactId>
+	<version>1.0.0.Final</version>
 	<name>Ajax4Jsf test framework</name>
 	<url>https://ajax4jsf.dev.java.net</url>
 	
@@ -17,8 +17,8 @@
 			<id>jsf2_0</id>
 			<dependencies>
 				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl-jsf2</artifactId>
+					<groupId>br.com.omniweb.richfaces.framework</groupId>
+					<artifactId>richfaces-ie9-impl-jsf2</artifactId>
 					<version>${project.version}</version>
 					<scope>provided</scope>
 				</dependency>
@@ -31,8 +31,8 @@
 			<id>jsf1_2</id>
 			<dependencies>
 				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl</artifactId>
+					<groupId>br.com.omniweb.richfaces</groupId>
+					<artifactId>richfaces-ie9-impl</artifactId>
 					<version>${project.version}</version>
 					<scope>provided</scope>
 				</dependency>
