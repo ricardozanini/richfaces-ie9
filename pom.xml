@@ -1,0 +1,366 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.richfaces</groupId>
+	<artifactId>root</artifactId>
+	<packaging>pom</packaging>
+	<name>RichFaces project</name>
+	<version>3.3.4.Final</version>
+  <description>RichFaces project root</description>
+	<url>http://labs.jboss.com/jbossrichfaces</url>
+	<properties>
+		<snapshotRepository>
+			dav:https://snapshots.jboss.org/maven2
+		</snapshotRepository>
+	</properties>
+	<dependencies />
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+			<extension>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>8.2-504.jdbc3</version>
+			</extension>
+			<!-- scm deployment wagon 
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-scm</artifactId>
+				<version>1.0-alpha-5</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-manager-plexus</artifactId>
+				<version>1.0</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-provider-svnexe</artifactId>
+				<version>1.0</version>
+			</extension>
+			-->
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<archive>
+							<index>true</index>
+							<manifest>
+								<addDefaultSpecificationEntries>
+									true
+								</addDefaultSpecificationEntries>
+								<addDefaultImplementationEntries>
+									true
+								</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<mode>development</mode>
+								<Build-Number>
+									${buildNumber}
+								</Build-Number>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.4.2</version>
+    <configuration>
+        <systemProperties>
+            <!--<property>
+                <name>org.ajax4jsf.test.checkXHTML.file</name>
+                <value>C:/m2.txt</value>
+            </property>-->
+	    <property>
+                <name>org.ajax4jsf.test.checkXHTML</name>
+                <value>true</value>
+            </property>
+        </systemProperties>
+    </configuration>
+</plugin>
+
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+	<module>framework</module>
+	<!-- 
+		<module>cdk</module>
+		<module>framework</module>
+		<module>ui</module>
+		
+		<module>extensions</module>
+		<module>docs</module>
+		
+		<module>ui/assembly</module>
+		-->
+		<!-- 
+		<module>samples</module>
+		
+			<module>sandbox</module>
+		-->
+	</modules>
+	<repositories>
+		<repository>
+			<releases />
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+			<id>maven-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/1</url>
+			<layout>legacy</layout>
+		</repository>
+		<repository>
+			<releases />
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<releases />
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+			<id>repository.jboss.org</id>
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
+	</repositories>
+    <pluginRepositories>
+      <pluginRepository>
+        <id>atlassian-m2-repository</id>
+        <name>Atlassian Maven 2.x Repository</name>
+        <url>http://repository.atlassian.com/maven2</url>
+      </pluginRepository>
+    </pluginRepositories>	
+	<distributionManagement>
+		<downloadUrl>
+			http://www.jboss.org/richfaces/download
+		</downloadUrl>
+		<repository>
+			<id>repository.jboss.org</id>
+			<uniqueVersion>false</uniqueVersion>
+			<url>${releaseRepository}</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots.jboss.org</id>
+			<uniqueVersion>true</uniqueVersion>
+			<url>${snapshotRepository}</url>
+		</snapshotRepository>
+		<!--site>
+			<url>file:target/site2</url>
+		</site-->
+	</distributionManagement>
+	<issueManagement>
+		<system>JIRA</system>
+		<url>http://jira.jboss.org/jira/browse/RF</url>
+	</issueManagement>
+	<developers>
+		<developer>
+			<id>jbalunas</id>
+			<name>Jay Balunas</name>
+			<email>jbalunas@redhat.com</email>
+			<organization>JBoss, by RedHat Inc.</organization>
+			<organizationUrl>http://www.jboss.org</organizationUrl>
+			<roles>
+				<role>lead</role>
+			</roles>
+			<timezone>-5</timezone>
+		</developer>
+		<developer>
+			<id>alexsmirnov</id>
+			<name>Alexander Smirnov</name>
+			<email>alexsmirnov@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-8</timezone>
+		</developer>
+		<developer>
+			<id>nbelayevsky</id>
+			<name>Nick Belyaevsky</name>
+			<email>nbelayevsky@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+		<developer>
+			<id>kmishin</id>
+			<name>Konstantin Mishin</name>
+			<email>kmishin@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+		<developer>
+			<id>abelevich</id>
+			<name>Anton Belevich</name>
+			<email>abelevich@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+		<developer>
+			<id>pyaschenko</id>
+			<name>Pavel Yaschenko</name>
+			<email>pyaschenko@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+		<developer>
+			<id>amarkhel</id>
+			<name>Andrey Markhel</name>
+			<email>amarkhel@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+		<developer>
+			<id>akolonitsky</id>
+			<name>Alex Kolonitsky</name>
+			<email>akolonitsky@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+		<developer>
+			<id>ishaikovsky</id>
+			<name>Ilya Shaikovsky</name>
+			<email>ishaikovsky@exadel.com</email>
+			<organization>Exadel Inc.</organization>
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>LGPL 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<distribution>repo</distribution>
+			<comments>
+				GNU LESSER GENERAL PUBLIC LICENSE Version 2.1
+			</comments>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/branches/community/3.3.X</connection>
+		<developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</developerConnection>
+		<url>https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</url>
+	</scm>
+	<profiles>
+		<profile>
+			<id>jsf2_0</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>sandbox</id>
+			<modules>
+				<module>sandbox</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>clover</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.atlassian.maven.plugins</groupId>
+						<artifactId>maven-clover2-plugin</artifactId>
+						<version>2.3.1</version>
+						<configuration>
+							<includesAllSourceRoots>
+								true
+							</includesAllSourceRoots>
+							<licenseLocation>
+								${clover.license.path}
+							</licenseLocation>
+							<jdk>1.5</jdk>
+						</configuration>
+						<executions>
+							<execution>
+								<id>site</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>instrument</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>site-aggregate</id>
+								<phase>pre-site</phase>
+								<goals>
+									<goal>aggregate</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+
+			</build>
+			<reporting>
+				<plugins>
+					<plugin>
+						<groupId>com.atlassian.maven.plugins</groupId>
+						<artifactId>maven-clover2-plugin</artifactId>
+						<configuration>
+							<licenseLocation>${clover.license.path}</licenseLocation>
+							<jdk>1.5</jdk>
+							<configuration>
+								<generateHtml>true</generateHtml>
+								<generateXml>true</generateXml>
+							</configuration>
+						</configuration>
+					</plugin>
+				</plugins>
+			</reporting>
+		</profile>
+	</profiles>
+</project>

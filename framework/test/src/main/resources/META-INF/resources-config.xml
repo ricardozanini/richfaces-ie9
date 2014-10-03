@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource-config>
+	<resource>
+		<name>javax.faces/jsf.js</name>
+		<path>META-INF/resources/javax.faces/jsf.js</path>
+		<renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+	</resource>
+</resource-config>
