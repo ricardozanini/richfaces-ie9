@@ -5,7 +5,7 @@
 		<version>1.0.0.Final</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.com.omniweb.richfaces.framework</groupId>
+	<groupId>br.com.omniweb.richfaces</groupId>
 	<artifactId>richfaces-ie9-api</artifactId>
 	<name>Java Server Faces AJAX framework API</name>
 	<version>1.0.0.Final</version>

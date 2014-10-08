@@ -4,7 +4,7 @@
 	<groupId>br.com.omniweb.richfaces</groupId>
 	<artifactId>root</artifactId>
 	<packaging>pom</packaging>
-	<name>RichFaces project</name>
+	<name>RichFaces IE9 project</name>
 	<version>1.0.0.Final</version>
 	<description>RichFaces-IE9 project root</description>
 	<url>https://github.com/ricardozanini/richfaces-ie9</url>
@@ -71,9 +71,6 @@
 	</build>
 	<modules>
 		<module>framework</module>
-		<!-- <module>cdk</module> <module>framework</module> <module>ui</module> 
-			<module>extensions</module> <module>docs</module> <module>ui/assembly</module> -->
-		<!-- <module>samples</module> <module>sandbox</module> -->
 	</modules>
 	<repositories>
 		<repository>
