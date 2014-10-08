@@ -3,7 +3,7 @@ RichFaces3 IE9
 
 A fork of [richfaces.3.3.4-Final](http://anonsvn.jboss.org/repos/richfaces/branches/community/release-3.3.4/) with patches intended to fix IE9 (and any other browser) compatibility issues.
 
-Since the RichFaces team does not support the version 3 anymore, this project aims to support applications with richfaces 3 running on legacy browsers by applying fixes pointed out by the community. Only the "core" projects (`richfaces-impl` and `richfaces-api`) are planned to be changed, after all, it is there the client scripts supposed to be located.
+Since the RichFaces team does not support the version 3 anymore, this project aims to support applications with richfaces 3 running on legacy browsers by applying fixes pointed out by the community. Only the "core" projects (`richfaces-impl` and `richfaces-api`) are planned to be changed, after all, it is where the client scripts supposed to be located.
 
 Don't worry, the namespaces and class hierarchy did not change, so you could simply move on from the previous versions.
 
